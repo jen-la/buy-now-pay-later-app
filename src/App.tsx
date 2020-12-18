@@ -1,26 +1,44 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { ExamplePage } from './pages';
+import { ViewMode } from './models';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export interface State {
+  viewMode: ViewMode;
+}
+
+class App extends React.PureComponent<Record<string, unknown>, State> {
+  constructor(props: Record<string, unknown>) {
+    super(props);
+    this.state = {
+      viewMode: window.innerWidth < 1024 ? ViewMode.MOBILE : ViewMode.DESKTOP,
+    };
+  }
+  
+  componentDidMount = (): void => {
+    window.addEventListener('resize', this.handleResize);
+  };
+
+  handleResize = (): void => {
+    this.setState({ viewMode: window.innerWidth < 1024 ? ViewMode.MOBILE : ViewMode.DESKTOP });
+  };
+
+  componentWillUnmount = (): void => {
+    window.removeEventListener('resize', this.handleResize);
+  };
+
+  render = (): JSX.Element => {
+    return (
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <ExamplePage viewMode={this.state.viewMode} />
+          </Route>
+        </Switch>
+      </Router>    
+    );
+  };
 }
 
 export default App;
