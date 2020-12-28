@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ExamplePage } from './pages';
 import { ViewMode } from './models';
 import './App.css';
+import Navbar from './components/Navbar/Navbar';
 
 export interface State {
   viewMode: ViewMode;
@@ -34,6 +35,7 @@ class App extends React.PureComponent<Record<string, unknown>, State> {
         <Switch>
           <Route exact path="/">
             <ExamplePage viewMode={this.state.viewMode} />
+            <Navbar />
           </Route>
         </Switch>
       </Router>    
