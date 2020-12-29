@@ -6,7 +6,7 @@ class HomePage extends React.PureComponent<Record<string, unknown>, Record<strin
   render = (): JSX.Element => {
     return (
       <div className="home-page">
-        <h1>Hey [Jen]!</h1>
+        <h1>Hey Jen! <span role="img" aria-label="waving-hand">👋</span></h1>
         <FroppaCard />
         <h2>Spend</h2>
         <SpendGrid />

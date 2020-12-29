@@ -1,2 +1,14 @@
 .home-page {
+  padding: 15vh 6vw;
+}
+
+.home-page>h1 {
+  font-size: 2.5rem;
+  font-weight: 450;
+  margin-bottom: 4vh;
+}
+
+.home-page>h2 {
+  font-size: 1.8rem;
+  margin-top: 6vh;
 }

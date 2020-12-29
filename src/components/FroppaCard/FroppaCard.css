@@ -1,2 +1,30 @@
-.froppa-card {
+.froppa-card-svg,
+.froppa-card-ellipse {
+  position: absolute;
+  z-index: 1;
+}
+
+.froppa-card-svg.red {
+  z-index: 3;
+}
+
+.froppa-card-svg.yellow {
+  left: 30%;
+  bottom: 0;
+  z-index: 2;
+}
+
+.froppa-card-svg.purple {
+  right: 0;
+  z-index: 1;
+}
+
+.froppa-card-ellipse.red {
+  top: 10%;
+  right: 12%;
+}
+
+.froppa-card-ellipse.orange {
+  top: 10%;
+  right: 10%;
 }
