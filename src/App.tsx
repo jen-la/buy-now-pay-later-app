@@ -32,10 +32,10 @@ class App extends React.PureComponent<Record<string, unknown>, State> {
   render = (): JSX.Element => {
     return (
       <Router>
+        <Navbar />
         <Switch>
           <Route exact path="/example">
             <ExamplePage viewMode={this.state.viewMode} />
-            <Navbar />
           </Route>
           <Route exact path="/">
             <HomePage />

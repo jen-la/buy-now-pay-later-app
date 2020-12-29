@@ -17,6 +17,8 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
+      zIndex: 99,
+      position: 'relative',
     },
     paper: {
       marginRight: theme.spacing(2),

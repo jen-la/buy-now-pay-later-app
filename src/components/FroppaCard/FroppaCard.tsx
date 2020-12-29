@@ -1,10 +1,7 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
+import { makeStyles, Card, CardContent, Typography } from '@material-ui/core';
 // import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 // import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import './FroppaCard.css';
 
 const useStyles = makeStyles({
@@ -18,7 +15,7 @@ const useStyles = makeStyles({
     position: 'relative',
   },
   title: {
-    color: 'white',
+    color: '#FFF8F8',
     fontSize: 18,
   },
   pos: {
@@ -28,7 +25,7 @@ const useStyles = makeStyles({
     position: 'absolute',
     top: 25,
     left: 10,
-    zIndex: 99,
+    zIndex: 10,
   },
   // actions: {
   //   position: 'absolute',
@@ -39,8 +36,54 @@ const useStyles = makeStyles({
 
 const FroppaCard = (): JSX.Element => {
   const classes = useStyles();
+  // example API response based on Yodlee API reference (GET request to /accounts)
+  const exampleAccountData = { 
+    "account": [ 
+      { 
+        CONTAINER: "bank",
+        isManual: false,
+        isAsset: true,
+        lastUpdated: "2017-09-21T06:08:29Z",
+        currentBalance: { 
+          amount: 1500,
+          currency: "AUD"
+        },
+        availableBalance: { 
+          amount: 1500,
+          currency: "AUD"
+        },
+        displayedName: "Tim",
+        id: 2251053,
+        balance: { 
+          amount: 1500,
+          currency: "AUD"
+        },
+        accountName: "Savings Account",
+        accountNumber: "xxxx8823",
+        aggregationSource: "USER",
+        dataset: [ 
+          { 
+            lastUpdateAttempt: "2017-09-21T06:08:51Z",
+            updateEligibility: "ALLOW_UPDATE",
+            name: "BASIC_AGG_DATA",
+            lastUpdated: "2017-09-21T06:08:51Z",
+            additionalStatus: "AVAILABLE_DATA_RETRIEVED"
+          }
+        ],
+        providerName: "CBA",
+        accountStatus: "ACTIVE",
+        accountType: "SAVINGS",
+        providerId: "5",
+        includeInNetWorth: true,
+        createdDate: "2017-09-21T06:08:26Z",
+        providerAccountId: 2204099
+      }
+    ]
+  };
+
   return (
     <Card className={classes.root}>
+      {/* card svg graphics */}
       <svg className="froppa-card-svg red" xmlns="http://www.w3.org/2000/svg" width="170" height="156" viewBox="0 0 368 345" fill="none">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M189.773 3.35747C232.232 -0.939066 279.243 -5.10452 313.765 18.002C348.273 41.0994 360.757 83.0818 366.871 121.895C372.265 156.144 357.19 188.321 345.787 221.304C334.292 254.554 329.207 291.835 300.295 314.461C270.405 337.853 228.48 349.486 189.773 343.401C153.413 337.686 134.355 302.397 103.696 283.558C71.1272 263.545 20.7995 262.824 5.02579 229.878C-10.7705 196.885 14.4583 160.27 28.5667 126.638C41.8755 94.9118 55.7123 62.9911 84.16 41.2361C113.932 18.4683 151.264 7.25418 189.773 3.35747Z" fill="#E90F0F"/>
       </svg>
@@ -72,10 +115,10 @@ const FroppaCard = (): JSX.Element => {
       </svg>
       <CardContent className={classes.content}>
         <Typography className={classes.title} gutterBottom>
-          Jen Smith
+          Tim Smith
         </Typography>
         <Typography className={classes.pos} variant="h4" component="h2">
-          $1,500
+          ${exampleAccountData.account[0].availableBalance.amount}
         </Typography>
       </CardContent>
       {/* <CardActions className={classes.actions}>
