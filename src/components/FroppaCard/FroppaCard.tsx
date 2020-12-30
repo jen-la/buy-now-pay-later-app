@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles, Card, CardContent, Typography } from '@material-ui/core';
 // import CardActions from '@material-ui/core/CardActions';
 // import Button from '@material-ui/core/Button';
+import { exampleAccountData } from '../../models/data';
 import './FroppaCard.css';
 
 const useStyles = makeStyles({
@@ -36,50 +37,6 @@ const useStyles = makeStyles({
 
 const FroppaCard = (): JSX.Element => {
   const classes = useStyles();
-  // example API response based on Yodlee API reference (GET request to /accounts)
-  const exampleAccountData = { 
-    "account": [ 
-      { 
-        CONTAINER: "bank",
-        isManual: false,
-        isAsset: true,
-        lastUpdated: "2017-09-21T06:08:29Z",
-        currentBalance: { 
-          amount: 1500,
-          currency: "AUD"
-        },
-        availableBalance: { 
-          amount: 1500,
-          currency: "AUD"
-        },
-        displayedName: "Tim",
-        id: 2251053,
-        balance: { 
-          amount: 1500,
-          currency: "AUD"
-        },
-        accountName: "Savings Account",
-        accountNumber: "xxxx8823",
-        aggregationSource: "USER",
-        dataset: [ 
-          { 
-            lastUpdateAttempt: "2017-09-21T06:08:51Z",
-            updateEligibility: "ALLOW_UPDATE",
-            name: "BASIC_AGG_DATA",
-            lastUpdated: "2017-09-21T06:08:51Z",
-            additionalStatus: "AVAILABLE_DATA_RETRIEVED"
-          }
-        ],
-        providerName: "CBA",
-        accountStatus: "ACTIVE",
-        accountType: "SAVINGS",
-        providerId: "5",
-        includeInNetWorth: true,
-        createdDate: "2017-09-21T06:08:26Z",
-        providerAccountId: 2204099
-      }
-    ]
-  };
 
   return (
     <Card className={classes.root}>
