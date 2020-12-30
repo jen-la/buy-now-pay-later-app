@@ -27,6 +27,15 @@ code {
   font-size: 100%;
 }
 
+body {
+  background-color: #443696;
+  line-height: 1.5;
+}
+
+h1, h2 {
+  color: #FFF8F8;
+}
+
 img {
   max-width: 100%;
   height: auto;

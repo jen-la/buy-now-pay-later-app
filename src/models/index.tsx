@@ -9,3 +9,10 @@ export enum ViewMode {
   DESKTOP,
   MOBILE,
 }
+
+// export interface Transaction {
+//   id: number;
+//   amount: number;
+//   merchantId: string;
+//   merchantName: string;
+// }
