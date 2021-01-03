@@ -1,0 +1,17 @@
+.wrapper { 
+    background: #443696;
+    display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction:column;
+}
+
+h1 { padding:50px;
+     font-size:24px;
+     font-weight: 300;}
+
+p { color:red;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction:column;}
