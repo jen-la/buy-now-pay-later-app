@@ -1,6 +1,4 @@
-
-
-  import React from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Grow from '@material-ui/core/Grow';
@@ -12,6 +10,13 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ClearIcon from '@material-ui/icons/Clear';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import { ContactUs } from '../../pages';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -69,7 +74,7 @@ export default function MenuListComposition() {
           aria-haspopup="true"
           onClick={handleToggle}
         >
-          <MenuIcon/>
+          <MenuIcon style={{color:"white"}}/>
         </Button>
         <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
           {({ TransitionProps, placement }) => (
@@ -80,10 +85,10 @@ export default function MenuListComposition() {
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                  <MenuItem onClick={handleClose}>Home</MenuItem>
+                  <MenuItem onClick={handleClose}component={Link} to="/">Home</MenuItem>
                   <MenuItem onClick={handleClose}>Transactions</MenuItem>
-                  <MenuItem onClick={handleClose}>Marketplace</MenuItem>
-                  <MenuItem onClick={handleClose}>Contact Us</MenuItem>
+                  <MenuItem onClick={handleClose}component={Link} to="/MarketPlace">Marketplace</MenuItem>
+                  <MenuItem onClick={handleClose} component={Link} to="/ContactUs">Contact Us</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
