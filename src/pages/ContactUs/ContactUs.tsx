@@ -1,4 +1,4 @@
-import { TextField, makeStyles,} from '@material-ui/core';
+import { TextField, makeStyles,InputLabel} from '@material-ui/core';
 import React from 'react';
 import { ViewMode } from '../../models';
 import './ContactUs.css';
@@ -16,10 +16,16 @@ const useStyles = makeStyles(theme => ({
     color:'white',
   },
   textField: {
-    color: 'green !important',
+    color: 'white',
     width: "25ch",
     padding:10,
   },
+  input: { 
+    color: 'orange',
+  },
+  label:{
+    color:'white'
+  }
   
 
 
@@ -40,9 +46,9 @@ const ContactUs = (): JSX.Element => {
         <img src ="https://myfroppabucket.s3-ap-southeast-2.amazonaws.com/Component+5.png"/>
 
         <form>
-           <TextField required id="standard-required" label="Required" defaultValue="Name" className={classes.textField}/>
-           <TextField required id="standard-required" label="Required" defaultValue="How can we help" className={classes.textField}/>
-           <TextField required id="standard-required" label="Required" defaultValue="Email" className={classes.textField}/>
+           <TextField required id="standard" label="Name" color="secondary" InputLabelProps={{className:classes.label}} className={classes.textField}   />
+           <TextField required id="standard-required" label="What's up?"  color="secondary" InputLabelProps={{className:classes.label}}  className={classes.textField}/>
+           <TextField required id="standard-required" label="Email" color="secondary" InputLabelProps={{className:classes.label}} className={classes.textField}/>
         </form>
         <Button
         variant="contained"
