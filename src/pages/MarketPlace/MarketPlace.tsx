@@ -10,7 +10,7 @@ class MarketPlace extends React.PureComponent<Record<string, unknown>, Record<st
   render = (): JSX.Element => {
     return (
     
-      <div className="wrapper">
+      <div className="marketplace">
         
         <img src="https://myfroppabucket.s3-ap-southeast-2.amazonaws.com/froppa.png"/>
 

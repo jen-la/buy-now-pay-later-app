@@ -1,0 +1,15 @@
+.transactions-page {
+  padding: 15vh 6vw;
+}
+
+.transactions-froppa-logo-container {
+  text-align: center;
+}
+
+.transactions-page>h2 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-top: 4vh; 
+  margin-bottom: 1vh;
+  text-align: center;
+}
