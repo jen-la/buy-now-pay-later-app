@@ -6,14 +6,18 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
-      overflow: 'hidden',
+      
       padding: theme.spacing(0, 3),
+      
+      
     },
     card: {
         borderRadius: 5,
         minHeight: 140,
         minWidth:240,
-        overflow: 'hidden',
+       
+        margin: 10,
+        flexWrap:'wrap',
         
     },
   }),
@@ -23,41 +27,36 @@ const MarketGrid = (): JSX.Element => {
     const classes=useStyles()
   
     return (
-      <>
+      < div className="about-Us">
         <Grid 
             container
+            justify="center"
             spacing={4}
-            direction ="column"
-            justify="center"
-            alignItems="center"
-        >
-            <Grid item xs ={5}  direction ="column"
-            justify="center"
-            alignItems="center"
-            alignContent="center">
-                <Card className={classes.card}><p>My name is slim shady</p></Card>
+        > 
+            <Grid item xs ={5} sm ={1} md={3} className={classes.card}>
+                <Card className={classes.card}><p className={classes.card}>This is example text</p></Card>
+                <Card className={classes.card}><p className={classes.card}>This is example text</p></Card>
+                <Card className={classes.card}><p className={classes.card}>This is example text</p></Card>
+               
             </Grid>
-            <Grid item xs ={5} >
-                <Card className={classes.card}><p>My name is slim shady</p></Card>
+            <Grid item xs ={5} sm ={1}md={3} className={classes.card}>
+                <Card className={classes.card}><p className={classes.card} >This is example text</p></Card>
+                <Card className={classes.card}><p className={classes.card}>This is example text</p></Card>
+                <Card className={classes.card}><p className={classes.card}>This is example text</p></Card>
+               
             </Grid>
-            <Grid item xs ={5} >
-                <Card className={classes.card}><p>My name is slim shady</p></Card>
+            <Grid item xs ={5} sm ={2}md={3} className={classes.card}>
+               <Card className={classes.card}><p className={classes.card}>This is example text</p></Card>
+                <Card className={classes.card}><p className={classes.card}>This is example text</p></Card>
+                <Card className={classes.card}><p className={classes.card}>This is example text</p></Card>
+             
             </Grid>
             
-         
-           
-         
-
         </Grid>
-
-
-
-
-
-
-      </>
+      </div>
       
     );
   };
   
   export default MarketGrid;
+
