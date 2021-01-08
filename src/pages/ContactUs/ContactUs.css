@@ -1,24 +1,23 @@
 .about-Us { 
     background: #443696;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-h1 { padding:50px;
+.about-Us>h1 { 
+    padding:50px;
     font-size:24px;
-    font-weight: 300;}
+    font-weight: 300;
+}
 
-
-form { 
+.about-Us>form { 
     display: flex;
-     justify-content: center;
-     align-items: center;
-     flex-direction: column;
-     padding:50px;
-   
-     
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding:50px; 
 }
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { HomePage, ContactUs, MarketPlace } from './pages';
+import { HomePage, ContactUs, MarketPlace, Transactions } from './pages';
 import { ViewMode } from './models';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
@@ -35,10 +35,13 @@ class App extends React.PureComponent<Record<string, unknown>, State> {
         <Navbar />
         <Switch>
           <Route exact path="/ContactUs" component={ContactUs}>
-            <ContactUs/>
+            <ContactUs />
           </Route>
           <Route exact path="/MarketPlace" component={MarketPlace}>
-            <MarketPlace/>
+            <MarketPlace />
+          </Route>
+          <Route exact path="/Transactions">
+            <Transactions />
           </Route>
           <Route exact path="/">
             <HomePage />

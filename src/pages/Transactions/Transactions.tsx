@@ -1,18 +1,25 @@
 import React from 'react';
-import Navbar from '../../components/Navbar/Navbar';
-import { ViewMode } from '../../models';
-import './ExamplePage.css';
+import { FroppaCard, TransactionSummary, TransactionList } from '../../components';
+// import { Yodlee } from '../../utils/Yodlee';
+// import { ViewMode } from '../../models';
+import './Transactions.css';
 
 interface Props {
-  viewMode: ViewMode;
+  // viewMode: ViewMode;
 }
 
 class Transactions extends React.PureComponent<Props, Record<string, unknown>> {
   render = (): JSX.Element => {
     return (
-      <div className="example-page">
-        {this.props.viewMode === ViewMode.MOBILE ? 'mobile-view' : 'desktop-view'}
-        <Navbar />
+      <div className="transactions-page">
+        <div className="transactions-froppa-logo-container">
+          <img src="https://myfroppabucket.s3-ap-southeast-2.amazonaws.com/froppa.png" alt="Froppa" />
+        </div>
+        <FroppaCard />
+        {/* <h2>Summary</h2> */}
+        <TransactionSummary />
+        {/* <h2>Transactions</h2> */}
+        <TransactionList />
       </div>
     );
   };
