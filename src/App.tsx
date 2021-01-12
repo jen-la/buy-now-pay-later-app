@@ -2,11 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { HomePage, ContactUs, MarketPlace, Transactions } from './pages';
 import { ViewMode } from './models';
+import { Yodlee } from './utils/Yodlee';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 
 export interface State {
   viewMode: ViewMode;
+  token: string;
 }
 
 class App extends React.PureComponent<Record<string, unknown>, State> {
@@ -14,11 +16,19 @@ class App extends React.PureComponent<Record<string, unknown>, State> {
     super(props);
     this.state = {
       viewMode: window.innerWidth < 1024 ? ViewMode.MOBILE : ViewMode.DESKTOP,
+      token: '',
     };
   }
   
-  componentDidMount = (): void => {
+  async componentDidMount(): Promise<void> {
     window.addEventListener('resize', this.handleResize);
+    
+    const token = await Yodlee.getToken();
+    this.setState({ token: token });
+    console.log('App state', token);
+
+    Yodlee.getAccounts(token);
+    Yodlee.getTransactions(token);
   };
 
   handleResize = (): void => {
@@ -44,7 +54,7 @@ class App extends React.PureComponent<Record<string, unknown>, State> {
             <Transactions />
           </Route>
           <Route exact path="/">
-            <HomePage />
+            <HomePage token={this.state.token} />
           </Route>
         </Switch>
       </Router>    
