@@ -35,7 +35,7 @@ export const Yodlee = {
       redirect: 'follow'
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => data)
     .catch(error => console.log(error));
   },
 
@@ -51,7 +51,7 @@ export const Yodlee = {
       redirect: 'follow'
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => data)
     .catch(error => console.log(error));
   }
 };

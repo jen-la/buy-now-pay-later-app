@@ -2,8 +2,12 @@ import React from 'react';
 import { makeStyles, Card, CardContent, Typography } from '@material-ui/core';
 // import CardActions from '@material-ui/core/CardActions';
 // import Button from '@material-ui/core/Button';
-import { exampleAccountData } from '../../models/data';
+// import { exampleAccountData } from '../../models/data';
 import './FroppaCard.css';
+
+interface Props {
+  accounts: any[];
+}
 
 const useStyles = makeStyles({
   root: {
@@ -35,8 +39,10 @@ const useStyles = makeStyles({
   // },
 });
 
-const FroppaCard = (): JSX.Element => {
+const FroppaCard = (props: Props): JSX.Element => {
   const classes = useStyles();
+  const aggregateBalance = props.accounts.reduce((total, acc) => total + acc.balance.amount, 0);
+  // example account balance: exampleAccountData.account[0].availableBalance.amount
 
   return (
     <Card className={classes.root}>
@@ -75,7 +81,7 @@ const FroppaCard = (): JSX.Element => {
           Tim Smith
         </Typography>
         <Typography className={classes.pos} variant="h4" component="h2">
-          ${exampleAccountData.account[0].availableBalance.amount}
+          ${Math.round(aggregateBalance)}
         </Typography>
       </CardContent>
       {/* <CardActions className={classes.actions}>

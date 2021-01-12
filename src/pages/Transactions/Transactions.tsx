@@ -1,11 +1,10 @@
 import React from 'react';
 import { FroppaCard, TransactionSummary, TransactionList } from '../../components';
-// import { Yodlee } from '../../utils/Yodlee';
-// import { ViewMode } from '../../models';
 import './Transactions.css';
 
 interface Props {
-  // viewMode: ViewMode;
+  accounts: any[];
+  transactions: any[];
 }
 
 class Transactions extends React.PureComponent<Props, Record<string, unknown>> {
@@ -15,11 +14,11 @@ class Transactions extends React.PureComponent<Props, Record<string, unknown>> {
         <div className="transactions-froppa-logo-container">
           <img src="https://myfroppabucket.s3-ap-southeast-2.amazonaws.com/froppa.png" alt="Froppa" />
         </div>
-        <FroppaCard />
+        <FroppaCard accounts={this.props.accounts} />
         {/* <h2>Summary</h2> */}
-        <TransactionSummary />
+        <TransactionSummary transactions={this.props.transactions} />
         {/* <h2>Transactions</h2> */}
-        <TransactionList />
+        <TransactionList transactions={this.props.transactions} />
       </div>
     );
   };

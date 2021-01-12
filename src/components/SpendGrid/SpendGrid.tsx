@@ -3,6 +3,10 @@ import { makeStyles, Grid, Card, CardContent, Typography } from '@material-ui/co
 import { exampleTransactions, merchantIcons } from '../../models/data';
 import './SpendGrid.css';
 
+interface Props {
+  transactions: any[]; // to incorporate API data
+}
+
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
@@ -19,7 +23,7 @@ const useStyles = makeStyles({
   },
 });
 
-const SpendGrid = (): JSX.Element => {
+const SpendGrid = (props: Props): JSX.Element => {
   const classes = useStyles();
   const totalSpend = exampleTransactions.transaction.reduce((total, trans) => total + trans.amount.amount, 0);
 

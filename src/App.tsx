@@ -9,6 +9,8 @@ import Navbar from './components/Navbar/Navbar';
 export interface State {
   viewMode: ViewMode;
   token: string;
+  accounts: any[];
+  transactions: any[];
 }
 
 class App extends React.PureComponent<Record<string, unknown>, State> {
@@ -17,18 +19,26 @@ class App extends React.PureComponent<Record<string, unknown>, State> {
     this.state = {
       viewMode: window.innerWidth < 1024 ? ViewMode.MOBILE : ViewMode.DESKTOP,
       token: '',
+      accounts: [],
+      transactions: [],
     };
   }
   
   async componentDidMount(): Promise<void> {
     window.addEventListener('resize', this.handleResize);
     
+    // generate token and get account balance and transaction data 
     const token = await Yodlee.getToken();
     this.setState({ token: token });
-    console.log('App state', token);
+    console.log('App state: token ', token);
 
-    Yodlee.getAccounts(token);
-    Yodlee.getTransactions(token);
+    const accounts = await Yodlee.getAccounts(token);
+    this.setState({ accounts: accounts.account });
+    console.log('App state: accounts ', accounts.account);
+
+    const transactions = await Yodlee.getTransactions(token);
+    this.setState({ transactions: transactions.transaction });
+    console.log('App state: trans ', transactions.transaction );
   };
 
   handleResize = (): void => {
@@ -51,10 +61,10 @@ class App extends React.PureComponent<Record<string, unknown>, State> {
             <MarketPlace />
           </Route>
           <Route exact path="/Transactions">
-            <Transactions />
+            <Transactions accounts={this.state.accounts} transactions={this.state.transactions} />
           </Route>
           <Route exact path="/">
-            <HomePage token={this.state.token} />
+            <HomePage token={this.state.token} accounts={this.state.accounts} transactions={this.state.transactions} />
           </Route>
         </Switch>
       </Router>    

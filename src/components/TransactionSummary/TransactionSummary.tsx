@@ -3,6 +3,10 @@ import { makeStyles, Card, List, ListItem, ListItemText } from '@material-ui/cor
 import { exampleTransactions } from '../../models/data';
 import './TransactionSummary.css';
 
+interface Props {
+  transactions: any[]; // to incorporate API data
+}
+
 const useStyles = makeStyles({
   root: {
     borderRadius: 20,
@@ -16,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-const TransactionSummary = (): JSX.Element => {
+const TransactionSummary = (props: Props): JSX.Element => {
   const classes = useStyles();
   
   // create array of filtered transactions by category (assuming key categories below) - to refactor
