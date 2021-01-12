@@ -3,6 +3,10 @@ import { makeStyles, Card, List, ListItem, ListItemAvatar, Avatar, ListItemText 
 import { exampleTransactions, merchantIcons } from '../../models/data';
 import './TransactionList.css';
 
+interface Props {
+  transactions: any[]; // to incorporate API data
+}
+
 const useStyles = makeStyles({
   root: {
     borderRadius: 20,
@@ -15,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-const TransactionList = (): JSX.Element => {
+const TransactionList = (props: Props): JSX.Element => {
   const classes = useStyles();
 
   return (

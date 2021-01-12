@@ -18,37 +18,10 @@ export const Yodlee = {
     })
     .then(response => response.json())
     .then(data => {
-      // console.log(data.token.accessToken);
-      // Yodlee.launchFastlink(data.token.accessToken);
-      // Yodlee.getAccounts(data.token.accessToken);
-      // Yodlee.getTransactions(data.token.accessToken);
       return data.token.accessToken;
     })        
     .catch(error => console.log('Error: ', error.statusText));
   },
-
-  // launchFastlink(token: string): void {
-  //   let window: any;
-  //   window.fastlink.open({
-  //     fastLinkURL: 'https://sandbox-node.yodlee.com.au/authenticate/anzdevexsandbox',
-  //     accessToken: `Bearer ${token}`,
-  //     params: {
-  //       userExperienceFlow : 'Aggregation'
-  //     },
-  //     onSuccess: function (data: any) {
-  //       console.log(data);
-  //     },
-  //     onError: function (data: any) {
-  //       console.log(data);
-  //     },
-  //     onExit: function (data: any) {
-  //       console.log(data);
-  //     },
-  //     onEvent: function (data: any) {
-  //       console.log(data);
-  //     }
-  //   })
-  // },
 
   getAccounts(token: string): Promise<any> {
     const headers = new Headers(); 
@@ -62,7 +35,7 @@ export const Yodlee = {
       redirect: 'follow'
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => data)
     .catch(error => console.log(error));
   },
 
@@ -78,7 +51,7 @@ export const Yodlee = {
       redirect: 'follow'
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => data)
     .catch(error => console.log(error));
   }
 };
