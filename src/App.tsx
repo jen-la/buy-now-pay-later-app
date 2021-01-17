@@ -5,6 +5,7 @@ import { ViewMode } from './models';
 import { Yodlee } from './utils/Yodlee';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
+import LogInPage from './pages/LogIn/LogInPage';
 
 export interface State {
   viewMode: ViewMode;
@@ -56,6 +57,9 @@ class App extends React.PureComponent<Record<string, unknown>, State> {
         <Switch>
           <Route exact path="/ContactUs" component={ContactUs}>
             <ContactUs />
+          </Route>
+          <Route exact path="/LogInPage" component={LogInPage}>
+            <LogInPage />
           </Route>
           <Route exact path="/MarketPlace" component={MarketPlace}>
             <MarketPlace />

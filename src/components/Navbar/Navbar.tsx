@@ -89,6 +89,7 @@ export default function MenuListComposition() {
                   <MenuItem onClick={handleClose} component={Link} to="/Transactions">Transactions</MenuItem>
                   <MenuItem onClick={handleClose} component={Link} to="/MarketPlace">Marketplace</MenuItem>
                   <MenuItem onClick={handleClose} component={Link} to="/ContactUs">Contact Us</MenuItem>
+                  <MenuItem onClick={handleClose} component={Link} to="/LogInPage">Log In</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
