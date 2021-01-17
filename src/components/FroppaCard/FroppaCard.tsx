@@ -81,7 +81,7 @@ const FroppaCard = (props: Props): JSX.Element => {
           Tim Smith
         </Typography>
         <Typography className={classes.pos} variant="h4" component="h2">
-          ${Math.round(aggregateBalance)}
+        ${Math.round(aggregateBalance)}
         </Typography>
       </CardContent>
       {/* <CardActions className={classes.actions}>
