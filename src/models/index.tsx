@@ -1,5 +1,4 @@
 // custom typescript data types go here
-
 export enum ViewMode {
   DESKTOP,
   MOBILE,
@@ -8,6 +7,16 @@ export enum ViewMode {
 export type UserExperienceFlowType = 'Aggregation' | 'Verification' | 'Aggregation plus Verification';
 
 export type TokenEnumType = 'AccessToken' | 'JwtToken';
+
+export interface CategorySpend {
+  category: string;
+  spend: number;
+}
+
+export interface MerchantSpend {
+  merchant: string;
+  spend: number;
+}
 
 export interface TokenType {
   tokenType: TokenEnumType;

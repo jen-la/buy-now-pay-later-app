@@ -1,10 +1,11 @@
 import React from 'react';
 import { makeStyles, Card, List, ListItem, ListItemAvatar, Avatar, ListItemText } from '@material-ui/core';
 import { exampleTransactions, merchantIcons } from '../../models/data';
+import { reverseDate } from '../../utils/index';
 import './TransactionList.css';
 
 interface Props {
-  transactions: any[]; // to incorporate API data
+  transactions: any[]; 
 }
 
 const useStyles = makeStyles({
@@ -17,6 +18,12 @@ const useStyles = makeStyles({
   amount: {
     textAlign: 'right',
   },
+  debit: {
+    color: 'red',
+  },
+  credit: {
+    color: 'green',
+  },
 });
 
 const TransactionList = (props: Props): JSX.Element => {
@@ -25,15 +32,23 @@ const TransactionList = (props: Props): JSX.Element => {
   return (
     <Card className={classes.root}>
       <List>
-        {exampleTransactions.transaction.map(trans => (
+        {/* {exampleTransactions.transaction.map(trans => ( */}
+        {props.transactions.map(trans => (
           <ListItem key={trans.id}>
             <ListItemAvatar>
               <Avatar>
-                {merchantIcons.hasOwnProperty(trans.merchant.name) ? merchantIcons[(trans.merchant.name)] : trans.merchant.name[0].toUpperCase()}
+                {merchantIcons.hasOwnProperty(trans.merchant.name) ? merchantIcons[(trans.merchant.name)] 
+                  : trans.merchant.name ? trans.merchant.name[0].toUpperCase() 
+                  : ':-)'
+                }
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={trans.merchant.name} secondary={trans.category} />
-            <ListItemText className={classes.amount} primary={`-$${trans.amount.amount.toFixed(2)}`} secondary={trans.date} />
+            <ListItemText primary={trans.merchant.name ? trans.merchant.name : '---'} secondary={trans.category} />
+            <ListItemText 
+              className={trans.baseType === 'DEBIT' ? `${classes.amount} ${classes.debit}` : `${classes.amount} ${classes.credit}`}
+              primary={trans.baseType === 'DEBIT' ? `-$${trans.amount.amount.toFixed(2)}` : `$${trans.amount.amount.toFixed(2)}`}
+              secondary={reverseDate(trans.date)} 
+            />
           </ListItem>
         ))}
       </List>

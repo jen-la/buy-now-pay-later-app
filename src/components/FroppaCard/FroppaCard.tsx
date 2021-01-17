@@ -3,6 +3,7 @@ import { makeStyles, Card, CardContent, Typography } from '@material-ui/core';
 // import CardActions from '@material-ui/core/CardActions';
 // import Button from '@material-ui/core/Button';
 // import { exampleAccountData } from '../../models/data';
+import { formatCardBalance } from '../../utils/index';
 import './FroppaCard.css';
 
 interface Props {
@@ -81,7 +82,7 @@ const FroppaCard = (props: Props): JSX.Element => {
           Tim Smith
         </Typography>
         <Typography className={classes.pos} variant="h4" component="h2">
-        ${Math.round(aggregateBalance)}
+          {props.accounts.length === 0 ? 'Loading...' : `$${formatCardBalance(Math.round(aggregateBalance))}`}
         </Typography>
       </CardContent>
       {/* <CardActions className={classes.actions}>
