@@ -34,21 +34,21 @@ const MarketGrid = (): JSX.Element => {
             spacing={4}
         > 
             <Grid item xs ={5} sm ={1} md={3} className={classes.card}>
-                <Card className={classes.card}><p className={classes.card}>This is example text</p></Card>
-                <Card className={classes.card}><p className={classes.card}>This is example text</p></Card>
-                <Card className={classes.card}><p className={classes.card}>This is example text</p></Card>
+                <Card className={classes.card}><p className={classes.card}>Chemist WareHouse</p></Card>
+                <Card className={classes.card}><p className={classes.card}>BMW</p></Card>
+                <Card className={classes.card}><p className={classes.card}>IGA</p></Card>
                
             </Grid>
             <Grid item xs ={5} sm ={1}md={3} className={classes.card}>
-                <Card className={classes.card}><p className={classes.card} >This is example text</p></Card>
-                <Card className={classes.card}><p className={classes.card}>This is example text</p></Card>
-                <Card className={classes.card}><p className={classes.card}>This is example text</p></Card>
+                <Card className={classes.card}><p className={classes.card}>Telstra</p></Card>
+                <Card className={classes.card}><p className={classes.card}>Apple</p></Card>
+                <Card className={classes.card}><p className={classes.card}>Samsung</p></Card>
                
             </Grid>
             <Grid item xs ={5} sm ={2}md={3} className={classes.card}>
-               <Card className={classes.card}><p className={classes.card}>This is example text</p></Card>
-                <Card className={classes.card}><p className={classes.card}>This is example text</p></Card>
-                <Card className={classes.card}><p className={classes.card}>This is example text</p></Card>
+               <Card className={classes.card}><p className={classes.card}>Cartier</p></Card>
+                <Card className={classes.card}><p className={classes.card}>Redbull</p></Card>
+                <Card className={classes.card}><p className={classes.card}>Starbucks</p></Card>
              
             </Grid>
             

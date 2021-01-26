@@ -1,9 +1,10 @@
 import React from 'react';
-import { makeStyles,TextField } from '@material-ui/core';
+import { makeStyles,TextField,CircularProgress  } from '@material-ui/core';
 import { createStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyDeI-xw6uluKoPRVzMNfGC1MQN5-7TPPUk",
@@ -21,7 +22,7 @@ const uiConfig = {
   // Popup signin flow rather than redirect flow.
   signInFlow: 'popup',
   
-  signInSuccessUrl: '/ContactUs',
+  signInSuccessUrl: '/',
   
   signInOptions: [
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
@@ -37,6 +38,7 @@ export const SignInScreen = ():JSX.Element =>  {
         <img src="https://myfroppabucket.s3-ap-southeast-2.amazonaws.com/froppa.png"/>
         <p>Please sign-in:</p>
         <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>
+        
       </div>
     );
   }
