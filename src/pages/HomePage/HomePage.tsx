@@ -1,17 +1,19 @@
 import React from 'react';
 import { Fastlink, FroppaCard, SpendGrid } from '../../components';
+import { Loading } from 'react-loading-dot';
 import './HomePage.css';
 
 interface Props {
   token: string;
   accounts: any[];
   transactions: any[];
+  isLoaded: boolean;
 }
 
 // to convert to functional component if no other methods needed
 class HomePage extends React.PureComponent<Props, Record<string, unknown>> {
   render = (): JSX.Element => {
-    return (
+    return this.props.isLoaded ? (
       <div className="home-page">
         <Fastlink token={this.props.token} />
         <h1>Hey Tim! <span role="img" aria-label="waving-hand">👋</span></h1>
@@ -20,6 +22,8 @@ class HomePage extends React.PureComponent<Props, Record<string, unknown>> {
         <p>(last 30 days)</p>
         <SpendGrid transactions={this.props.transactions} />
       </div>
+    ) : (
+      <Loading background="#FFC807" />
     );
   };
 }

@@ -1,9 +1,10 @@
 .transactions-page {
-  padding: 15vh 6vw;
+  padding: 5vh 6vw;
 }
 
 .transactions-froppa-logo-container {
   text-align: center;
+  margin-bottom: 6vmax;
 }
 
 .transactions-page>h2 {

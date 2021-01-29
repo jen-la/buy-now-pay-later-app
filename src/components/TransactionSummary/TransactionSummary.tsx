@@ -18,7 +18,6 @@ const useStyles = makeStyles({
   },
   listItem: {
     display: 'flex',
-    justifyContent: 'space-between',
   },
 });
 
@@ -67,7 +66,7 @@ const TransactionSummary = (props: Props): JSX.Element => {
           </ListItem>       
         ))} */}
         {keysArray.map(category => (
-          <ListItem className={classes.listItem}>
+          <ListItem key={category} className={classes.listItem}>
             <ListItemText primary={category} />
             <span>${Math.round(totalCategorySpend[category])}</span>
           </ListItem>       

@@ -1,7 +1,7 @@
 import React from 'react';
-import { makeStyles, Card, CardContent, Typography } from '@material-ui/core';
-// import CardActions from '@material-ui/core/CardActions';
-// import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
+import { makeStyles, Card, CardContent, CardActions, Typography } from '@material-ui/core';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 // import { exampleAccountData } from '../../models/data';
 import { formatCardBalance } from '../../utils/index';
 import './FroppaCard.css';
@@ -33,11 +33,12 @@ const useStyles = makeStyles({
     left: 10,
     zIndex: 10,
   },
-  // actions: {
-  //   position: 'absolute',
-  //   bottom: 3,
-  //   zIndex: 99,
-  // },
+  actions: {
+    position: 'absolute',
+    bottom: 3,
+    left: 18,
+    zIndex: 99,
+  },
 });
 
 const FroppaCard = (props: Props): JSX.Element => {
@@ -82,12 +83,15 @@ const FroppaCard = (props: Props): JSX.Element => {
           Tim Smith
         </Typography>
         <Typography className={classes.pos} variant="h4" component="h2">
-          {props.accounts.length === 0 ? 'Loading...' : `$${formatCardBalance(Math.round(aggregateBalance))}`}
+          {props.accounts.length === 0 ? 'Getting your balance...' : `$${formatCardBalance(Math.round(aggregateBalance))}`}
         </Typography>
       </CardContent>
-      {/* <CardActions className={classes.actions}>
-        <Button size="small">Visit the Marketplace</Button>
-      </CardActions> */}
+      <CardActions className={classes.actions}>
+        <Link to="/MarketPlace" className="froppa-card-link">
+          <span>Visit marketplace</span>
+          <ArrowRightIcon />
+        </Link>
+      </CardActions>
     </Card>
   );
 };

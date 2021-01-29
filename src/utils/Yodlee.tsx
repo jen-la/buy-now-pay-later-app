@@ -17,10 +17,14 @@ export const Yodlee = {
       redirect: 'follow' 
     })
     .then(response => response.json())
-    .then(data => {
-      return data.token.accessToken;
-    })        
-    .catch(error => console.log('Error: ', error.statusText));
+    .then(
+      (data) => {
+        return data.token.accessToken;
+      }, 
+      (error) => {
+        console.log('Error: ', error.statusText);
+      }        
+    );
   },
 
   getAccounts(token: string): Promise<any> {
@@ -35,8 +39,14 @@ export const Yodlee = {
       redirect: 'follow'
     })
     .then(response => response.json())
-    .then(data => data)
-    .catch(error => console.log(error));
+    .then(
+      (data) => { 
+        return data;
+      },
+      (error) => {
+        console.log('Error: ', error.statusText);
+      }
+    );
   },
 
   getTransactions(token: string): Promise<any> {
@@ -51,7 +61,13 @@ export const Yodlee = {
       redirect: 'follow'
     })
     .then(response => response.json())
-    .then(data => data)
-    .catch(error => console.log(error));
+    .then(
+      (data) => {
+        return data;
+      },
+      (error) => {
+        console.log('Error: ', error.statusText);
+      }
+    );
   }
 };

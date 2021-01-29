@@ -28,18 +28,30 @@ export const aggregateCategorySpend = (trans: any[]): CategorySpend => {
 }; 
 
 export const aggregateMerchantSpend = (trans: any[]): MerchantSpend => {
+  // create object to store merchants and spend as key value pairs
   let merchantSpend: any = { Misc: 0 };
-
+  console.log('trans argument', trans);
+  
   for (let i = 0; i < trans.length; i++) {
-    if (trans[i].merchant.name && merchantSpend.hasOwnProperty(trans[i].merchant.name)) {
-      merchantSpend[trans[i].merchant.name] += Number(trans[i].amount.amount);
-    } else if (trans[i].merchant.name && !merchantSpend.hasOwnProperty(trans[i].merchant.name)) {
-      merchantSpend[trans[i].merchant.name] = Number(trans[i].amount.amount);
-    } else {
+    if (!trans[i].merchant || (trans[i].merchant && !trans[i].merchant.hasOwnProperty('name'))) {
+      // if no merchant property or merchant name, increment merchantSpend.Misc
       merchantSpend.Misc += Number(trans[i].amount.amount);
+    } else if (merchantSpend.hasOwnProperty(trans[i].merchant.name)) {
+      // if merchant name already a property, increment its value
+      merchantSpend[trans[i].merchant.name] += Number(trans[i].amount.amount);
+    } else {
+      // if merchant name not already set, add it as a property
+      merchantSpend[trans[i].merchant.name] = Number(trans[i].amount.amount);
     } 
+    // if (trans[i].merchant && merchantSpend.hasOwnProperty(trans[i].merchant.name)) {
+    //   merchantSpend[trans[i].merchant.name] += Number(trans[i].amount.amount);
+    // } else if (trans[i].merchant && !merchantSpend.hasOwnProperty(trans[i].merchant.name)) {
+    //   merchantSpend[trans[i].merchant.name] = Number(trans[i].amount.amount);
+    // } else {
+    //   merchantSpend.Misc += Number(trans[i].amount.amount);
+    // } 
   }
-
+  
   return merchantSpend;
 }; 
 

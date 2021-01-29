@@ -17,6 +17,9 @@ const useStyles = makeStyles({
     minHeight: 150,
     overflow: 'hidden',
   },
+  cardIcon: {
+    marginBottom: 25,
+  },
   cardTitle: {
     fontSize: 20,
     fontWeight: 500,
@@ -29,11 +32,12 @@ const SpendGrid = (props: Props): JSX.Element => {
   
   // filter out transactions with baseType of DEBIT
   const debitTrans = props.transactions.filter(trans => trans.baseType === 'DEBIT'); 
-  
+  console.log('debitTrans ', debitTrans);
+
   // calculate total spend excl. transactions with baseType of CREDIT 
   const totalSpend = debitTrans.reduce((total, trans) => total + trans.amount.amount, 0);
   // const totalSpend = exampleTransactions.transaction.reduce((total, trans) => total + trans.amount.amount, 0);
-  
+
   // aggregate spend by merchant
   const totalMerchantSpend: any = aggregateMerchantSpend(debitTrans);
   const keysArray = Object.keys(totalMerchantSpend);
@@ -45,7 +49,7 @@ const SpendGrid = (props: Props): JSX.Element => {
           <Grid item xs={6} sm={3} key={merchant}>
             <Card className={classes.card}>
               <CardContent>
-                {merchantIcons.hasOwnProperty(merchant) ? merchantIcons[(merchant)] : <Avatar>$</Avatar>}
+                {merchantIcons.hasOwnProperty(merchant) ? merchantIcons[(merchant)] : <Avatar className={classes.cardIcon}>$</Avatar>}
                 <Typography className={classes.cardTitle} color="textSecondary" gutterBottom>
                   {Math.round(totalMerchantSpend[merchant] / totalSpend * 100)}%
                 </Typography>

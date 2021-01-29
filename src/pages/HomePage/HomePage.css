@@ -1,5 +1,6 @@
 .home-page {
   padding: 15vh 6vw;
+  position: relative;
 }
 
 .home-page>h1 {

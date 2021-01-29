@@ -37,13 +37,13 @@ const TransactionList = (props: Props): JSX.Element => {
           <ListItem key={trans.id}>
             <ListItemAvatar>
               <Avatar>
-                {merchantIcons.hasOwnProperty(trans.merchant.name) ? merchantIcons[(trans.merchant.name)] 
-                  : trans.merchant.name ? trans.merchant.name[0].toUpperCase() 
-                  : ':-)'
+                {trans.merchant && trans.merchant.hasOwnProperty('name') && merchantIcons.hasOwnProperty(trans.merchant.name) ? merchantIcons[(trans.merchant.name)] 
+                  : trans.merchant && trans.merchant.hasOwnProperty('name') ? trans.merchant.name[0].toUpperCase() 
+                  : '$'
                 }
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={trans.merchant.name ? trans.merchant.name : '---'} secondary={trans.category} />
+            <ListItemText primary={trans.merchant && trans.merchant.hasOwnProperty('name') ? trans.merchant.name : '---'} secondary={trans.category} />
             <ListItemText 
               className={trans.baseType === 'DEBIT' ? `${classes.amount} ${classes.debit}` : `${classes.amount} ${classes.credit}`}
               primary={trans.baseType === 'DEBIT' ? `-$${trans.amount.amount.toFixed(2)}` : `$${trans.amount.amount.toFixed(2)}`}

@@ -1,5 +1,6 @@
 // import React from 'react';
 import { useYodlee } from '../../utils/Fastlink';
+import { Button } from '@material-ui/core';
 import './Fastlink.css';
 
 interface Props {
@@ -21,7 +22,7 @@ const Fastlink = (props: Props): JSX.Element => {
   return (
     <div className="fastlink">
       <div id="container-fastlink"></div>
-      { ready ? <button onClick={() => init()}>Link your account(s)</button> : 'Loading...' }
+      { ready ? <Button onClick={() => init()} variant="contained">Link your account(s)</Button> : 'Loading FastLink' }
     </div>
   );
 }

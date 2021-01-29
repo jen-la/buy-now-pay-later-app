@@ -1,3 +1,14 @@
 .fastlink {
-  text-align: center;
+  color: white;
+  position: absolute;
+  top: 0;
+  right: 6vw;
+}
+
+.fastlink button {
+  /* background-color: #3A8FDC; */
+  background-color: #3F3CD4;
+  color: white;
+  font-weight: 400;
+  font-size: 0.75rem;
 }
