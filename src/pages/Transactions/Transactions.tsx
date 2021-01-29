@@ -1,5 +1,6 @@
 import React from 'react';
 import { FroppaCard, TransactionSummary, TransactionList } from '../../components';
+import { Loading } from 'react-loading-dot';
 import './Transactions.css';
 
 interface Props {
@@ -22,7 +23,7 @@ class Transactions extends React.PureComponent<Props, Record<string, unknown>> {
         <TransactionList transactions={this.props.transactions} />
       </div>
     ) : (
-      <div className="transactions-page-loading">Loading...</div>
+      <Loading background="#FFC807" />
     );
   };
 }

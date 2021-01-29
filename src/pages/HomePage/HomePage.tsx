@@ -1,5 +1,6 @@
 import React from 'react';
 import { Fastlink, FroppaCard, SpendGrid } from '../../components';
+import { Loading } from 'react-loading-dot';
 import './HomePage.css';
 
 interface Props {
@@ -22,7 +23,7 @@ class HomePage extends React.PureComponent<Props, Record<string, unknown>> {
         <SpendGrid transactions={this.props.transactions} />
       </div>
     ) : (
-      <div className="home-page-loading">Loading...</div>
+      <Loading background="#FFC807" />
     );
   };
 }
