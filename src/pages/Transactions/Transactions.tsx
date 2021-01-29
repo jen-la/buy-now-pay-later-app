@@ -5,21 +5,24 @@ import './Transactions.css';
 interface Props {
   accounts: any[];
   transactions: any[];
+  isLoaded: boolean;
 }
 
 class Transactions extends React.PureComponent<Props, Record<string, unknown>> {
   render = (): JSX.Element => {
-    return (
+    return this.props.isLoaded ? (
       <div className="transactions-page">
         <div className="transactions-froppa-logo-container">
           <img src="https://myfroppabucket.s3-ap-southeast-2.amazonaws.com/froppa.png" alt="Froppa" />
         </div>
         <FroppaCard accounts={this.props.accounts} />
-        {/* <h2>Summary</h2> */}
+        <h2>Summary</h2>
         <TransactionSummary transactions={this.props.transactions} />
-        {/* <h2>Transactions</h2> */}
+        <h2>Transactions</h2>
         <TransactionList transactions={this.props.transactions} />
       </div>
+    ) : (
+      <div className="transactions-page-loading">Loading...</div>
     );
   };
 }

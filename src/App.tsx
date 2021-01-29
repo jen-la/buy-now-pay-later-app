@@ -12,6 +12,8 @@ export interface State {
   token: string;
   accounts: any[];
   transactions: any[];
+  error?: string,
+  isLoaded: boolean,
 }
 
 class App extends React.PureComponent<Record<string, unknown>, State> {
@@ -19,6 +21,7 @@ class App extends React.PureComponent<Record<string, unknown>, State> {
     super(props);
     this.state = {
       viewMode: window.innerWidth < 1024 ? ViewMode.MOBILE : ViewMode.DESKTOP,
+      isLoaded: false,
       token: '',
       accounts: [],
       transactions: [],
@@ -30,15 +33,18 @@ class App extends React.PureComponent<Record<string, unknown>, State> {
     
     // generate token and get account balance and transaction data 
     const token = await Yodlee.getToken();
-    this.setState({ token: token });
-    console.log('App state: token ', token);
-
     const accounts = await Yodlee.getAccounts(token);
-    this.setState({ accounts: accounts.account });
-    console.log('App state: accounts ', accounts.account);
-
     const transactions = await Yodlee.getTransactions(token);
-    this.setState({ transactions: transactions.transaction });
+
+    this.setState({ 
+      token: token,
+      accounts: accounts.account,
+      transactions: transactions.transaction,
+      isLoaded: true, 
+    });
+
+    console.log('App state: token ', token);
+    console.log('App state: accounts ', accounts.account);
     console.log('App state: trans ', transactions.transaction );
   };
 
@@ -65,10 +71,10 @@ class App extends React.PureComponent<Record<string, unknown>, State> {
             <MarketPlace />
           </Route>
           <Route exact path="/Transactions">
-            <Transactions accounts={this.state.accounts} transactions={this.state.transactions} />
+            <Transactions accounts={this.state.accounts} transactions={this.state.transactions} isLoaded={this.state.isLoaded} />
           </Route>
           <Route exact path="/">
-            <HomePage token={this.state.token} accounts={this.state.accounts} transactions={this.state.transactions} />
+            <HomePage token={this.state.token} accounts={this.state.accounts} transactions={this.state.transactions} isLoaded={this.state.isLoaded} />
           </Route>
         </Switch>
       </Router>    

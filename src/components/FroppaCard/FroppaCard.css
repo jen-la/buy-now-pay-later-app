@@ -28,3 +28,9 @@
   top: 10%;
   right: 10%;
 }
+
+.froppa-card-link {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
